@@ -8,7 +8,6 @@ import { PRStatusTable } from 'components/presentational';
 
 function appSelector(appState) {
   return {
-    counter: currentCount(appState),
     portList: currentPortList(appState)
   };
 }
@@ -32,7 +31,6 @@ class App extends Component {
 }
 
 App.propTypes = {
-  counter: React.PropTypes.number,
   portList: React.PropTypes.array,
   dispatch: React.PropTypes.func
 };

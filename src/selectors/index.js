@@ -1,14 +1,5 @@
 import { createSelector } from 'reselect';
 
-function counter(state) {
-  return state.counter;
-}
-
-export const currentCount = createSelector(
-  [counter],
-  (counter) => (counter.count)
-);
-
 function portList(state) {
   return state.portStatus;
 }

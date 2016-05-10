@@ -4,11 +4,11 @@ import { Router } from 'react-router';
 import getRoutes from 'routes';
 
 const Root = ({ store, history }) => (
-    <Provider store={store}>
-        <Router history={history}>
-            {getRoutes()}
-        </Router>
-    </Provider>
+  <Provider store={store}>
+      <Router history={history}>
+          {getRoutes()}
+      </Router>
+  </Provider>
 );
 
 export default Root;
