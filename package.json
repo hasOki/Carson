@@ -3,8 +3,11 @@
   "version": "0.0.1",
   "description": "Carsons system Dashboard, TUNE home grown CI workflow.",
   "main": "server.js",
+  "repository": "https://github.com/hasOki/Carson",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "docker:build": "docker build -t carson .",
+    "docker:run": "docker run -p 1337:1337 --name Carson -d carson"
   },
   "license": "MIT",
   "dependencies": {

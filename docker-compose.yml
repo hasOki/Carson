@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  carson:
+    build: ./
+    ports:
+      - "1337:1337"
+    entrypoint: npm start
+    environment:
+      - "NODE_ENV=production"

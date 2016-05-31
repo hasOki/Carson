@@ -20,7 +20,7 @@ const checkingPortList = (portList, dispatch) => {
   portList.forEach((port) => {
     try {
       const opts = {
-        url: `${SERVER_URL}:${port}`
+        url: `${SERVER_URL}:${port}`,
       };
       metadata(opts, (err, data) => {
         if (err) {
@@ -32,7 +32,7 @@ const checkingPortList = (portList, dispatch) => {
             port,
             prBuildLink: `${SERVER_URL}:${port}`,
             link: data.meta['app-pr-link'],
-            author: data.meta['app-pr-author']
+            author: data.meta['app-pr-author'],
           };
           console.log(metaResult);
 
@@ -48,7 +48,7 @@ const checkingPortList = (portList, dispatch) => {
 
 export function resetPortList() {
   return {
-    type: RESET_PORT_STATUS
+    type: RESET_PORT_STATUS,
   };
 }
 
@@ -63,6 +63,6 @@ export function checkStatus() {
 export function deletePRBuild(prID) {
   return {
     type: DELETE_PR_BUILD,
-    prID
+    prID,
   };
 }
