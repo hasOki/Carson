@@ -8,7 +8,7 @@ const portStatus = require('./src/models/portStatus.js');
 const Q = require('q');
 
 const DEVELOPMENT = !(process.env.NODE_ENV === 'production');
-const PORT = 1337;
+const PORT = 4020;
 const IP = '0.0.0.0';
 
 const app = express();
