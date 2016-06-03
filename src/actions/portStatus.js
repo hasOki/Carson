@@ -12,7 +12,7 @@ const PORT_LENGTH = 20;
 export function updatePortStatus(portData) {
   return {
     type: UPDATE_PORT_STATUS,
-    portData
+    portData,
   };
 }
 

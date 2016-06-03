@@ -1,13 +1,5 @@
 {
   "presets": ["es2015", "stage-0", "react"],
-  "plugins": [
-    ["css-in-js",
-      {
-        "context": "./src/styles/GlobalStyles.js",
-        "bundleFile": "tmp/cssInJS.css"
-      }
-    ]
-  ],
   "env": {
     "development": {
       "plugins": [

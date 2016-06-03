@@ -1,0 +1,38 @@
+---
+team: 'ho_fn'
+project: 'hasoffers-carson'
+repository: 'git@github.com:hasOki/Carson.git'
+
+app:
+  build: './'
+
+registries:
+  tune_development: &default_registry
+    address: 'https://docker-dev.ops.tune.com'
+    verify: false
+  default: *default_registry
+
+environments:
+  # hosts
+  jenkins_sta: &jenkins_sta
+    address: 'https://dh-jenkins-docker02-dev.sea3.office.priv:2376'
+    ssl_cert_path: '/etc/docker/certs/client/staging/'
+    verify: false
+  admin_interface_app_sta: &carson_app_sta
+    address: 'https://h-p9hofn01-sta-1b.use01.ho.priv:2376'
+    ssl_cert_path: '/etc/docker/certs/client/staging/'
+    verify: false
+
+  development:
+  staging:
+    use01:
+      hosts:
+        default:
+          - *carson_app_sta
+        export:
+          - *jenkins_sta
+      deploy:
+        app:
+          image: tune_development/ho_fn/hasoffers-carson-app:use01-staging-latest
+          ports:
+            - "1337:1337"
