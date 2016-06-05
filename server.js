@@ -4,10 +4,11 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const bodyParser = require('body-parser');
 const webpackConfig = require('./webpack.config.js');
-const portStatus = require('./src/models/portStatus.js');
-const Q = require('q');
+const portStatus = require('./server/portStatus');
+const containerRedirect = require('./server/containerRedirect');
 
 const DEVELOPMENT = !(process.env.NODE_ENV === 'production');
+const STAGE_SERVER_URL = 'http://h-p9hofn01-sta-1b.use01.ho.priv';
 const PORT = 1337;
 const IP = '0.0.0.0';
 
@@ -34,19 +35,16 @@ if (DEVELOPMENT) {
 // Handle GET request
 // check status endpoint
 app.get('/status', (req, res) => {
-  const portStatusResult = portStatus.checkStatus();
-  Q.allSettled(portStatusResult)
+  portStatus
+    .checkStatus(STAGE_SERVER_URL)
     .then((results) => {
       res.json(results);
     });
 });
 
 // redirect to container port endpoint
-app.get('/prbuild', (req, res) => {
-  res.json({
-    params: req.params,
-    query: req.query,
-  });
+app.get('/prbuild/:id', (req, res) => {
+  res.redirect(containerRedirect.redirect(STAGE_SERVER_URL, req.params.id));
 });
 
 // everything else

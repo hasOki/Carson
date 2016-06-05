@@ -1,9 +1,6 @@
 const metadata = require('web-metadata');
 const Q = require('q');
-
-const SERVER_URL = 'http://h-p9hofn01-sta-1b.use01.ho.priv';
-const PORT_START = 4000;
-const PORT_LENGTH = 20;
+const CONFIG = require('./config');
 
 const checkPort = (option) => {
   console.log('Checking: ', option);
@@ -31,18 +28,18 @@ const checkPort = (option) => {
   return deferred.promise;
 };
 
-const checkPortList = (portList) => (
+const checkPortList = (serverURL, portList) => (
   portList.map((port) => (
     checkPort({
-      url: `${SERVER_URL}:${port}`,
+      url: `${serverURL}:${port}`,
       port,
     })
   ))
 );
 
-exports.checkStatus = () => {
-  const ports = Array.from(new Array(PORT_LENGTH), (x, i) => PORT_START + i);
-  return checkPortList(ports);
+exports.checkStatus = (serverURL = CONFIG.DEFAULT_SERVER_URL) => {
+  const ports = Array.from(new Array(CONFIG.PORT_LENGTH), (x, i) => CONFIG.PORT_START + i);
+  return Q.allSettled(checkPortList(serverURL, ports));
 };
 
 exports.deletePRBuild = (prID) => {
