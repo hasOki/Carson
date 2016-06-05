@@ -16,11 +16,11 @@ ADD package.json /tmp/package.json
 ADD .npmrc /tmp/.npmrc
 RUN cd /tmp && \
     npm install && \
-    mkdir -p /data/www/carson && cp -a /tmp/node_modules /data/www/admin_interface/
+    mkdir -p /data/www/carson && cp -a /tmp/node_modules /data/www/carson/
 
 COPY . /data/www/carson/
 WORKDIR /data/www/carson
 
 ENTRYPOINT ["npm"]
 CMD ["start"]
-EXPOSE 1337
+EXPOSE 4020
