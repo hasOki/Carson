@@ -5,10 +5,10 @@ RUN yum -y update && \
     yum -y install gcc-c++ && \
     yum -y install make && \
     yum -y clean all && \
-    curl -o /tmp/node-v5.8.0-linux-x64.tar.gz https://nodejs.org/dist/v5.8.0/node-v5.8.0-linux-x64.tar.gz && \
-    tar xzf /tmp/node-v5.8.0-linux-x64.tar.gz && \
-    cp -rp node-v5.8.0-linux-x64 /usr/local/ && \
-    ln -s /usr/local/node-v5.8.0-linux-x64 /usr/local/node
+    curl -o /tmp/node-v6.1.0-linux-x64.tar.gz https://nodejs.org/dist/v6.1.0/node-v6.1.0-linux-x64.tar.gz && \
+    tar xzf /tmp/node-v6.1.0-linux-x64.tar.gz && \
+    cp -rp node-v6.1.0-linux-x64 /usr/local/ && \
+    ln -s /usr/local/node-v6.1.0-linux-x64 /usr/local/node
 
 env PATH /usr/local/node/bin:$PATH
 
