@@ -23,4 +23,4 @@ WORKDIR /data/www/carson
 
 ENTRYPOINT ["npm"]
 CMD ["start"]
-EXPOSE 4020
+EXPOSE 1337
