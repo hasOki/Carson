@@ -1,50 +1,14 @@
-import metadata from 'web-metadata';
-
 export const CHECK_PORT_STATUS = 'CHECK_PORT_STATUS';
 export const RESET_PORT_STATUS = 'RESET_PORT_STATUS';
-export const UPDATE_PORT_STATUS = 'UPDATE_PORT_STATUS';
+export const UPDATE_PORTS_STATUS = 'UPDATE_PORTS_STATUS';
 export const DELETE_PR_BUILD = 'DELETE_PR_BUILD';
 
-const SERVER_URL = 'http://h-p9hofn01-sta-1b.use01.ho.priv';
-const PORT_START = 4000;
-const PORT_LENGTH = 20;
-
-export function updatePortStatus(portData) {
+export function updatePortsStatus(portsData) {
   return {
-    type: UPDATE_PORT_STATUS,
-    portData,
+    type: UPDATE_PORTS_STATUS,
+    portsData,
   };
 }
-
-const checkingPortList = (portList, dispatch) => {
-  portList.forEach((port) => {
-    try {
-      const opts = {
-        url: `${SERVER_URL}:${port}`,
-      };
-      metadata(opts, (err, data) => {
-        if (err) {
-          // console.error('Error', err);
-        } else {
-          const metaResult = {
-            id: data.meta['app-pr-id'],
-            title: data.meta['app-pr-title'],
-            port,
-            prBuildLink: `${SERVER_URL}:${port}`,
-            link: data.meta['app-pr-link'],
-            author: data.meta['app-pr-author'],
-          };
-          console.log(metaResult);
-
-          // dispatch the list update
-          dispatch(updatePortStatus(metaResult));
-        }
-      });
-    } catch (err) {
-      // console.error(err));
-    }
-  });
-};
 
 export function resetPortList() {
   return {
@@ -52,11 +16,22 @@ export function resetPortList() {
   };
 }
 
-const ports = Array.from(new Array(PORT_LENGTH), (x, i) => PORT_START + i);
 export function checkStatus() {
   return (dispatch) => {
+    // clean up previous port status
     dispatch(resetPortList());
-    checkingPortList(ports, dispatch);
+
+    // fetch port status list from API
+    fetch('/status', { method: 'GET' })
+    .then((result) => (result.json()))
+    .then((json) => {
+      console.log('JSON', json);
+      const ports = json
+        .filter((item) => (item.state === 'fulfilled'))
+        .map((item) => (item.value));
+      console.log('PORTS', ports);
+      dispatch(updatePortsStatus(ports));
+    });
   };
 }
 

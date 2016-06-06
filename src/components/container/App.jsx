@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { currentCount, currentPortList } from 'selectors';
+import { currentPortList } from 'selectors';
 import * as PortStatusActions from 'actions/portStatus';
 import { Container } from 'components/container';
 import { PRStatusTable } from 'components/presentational';
 
 function appSelector(appState) {
   return {
-    portList: currentPortList(appState)
+    portList: currentPortList(appState),
   };
 }
 
@@ -32,7 +32,7 @@ class App extends Component {
 
 App.propTypes = {
   portList: React.PropTypes.array,
-  dispatch: React.PropTypes.func
+  dispatch: React.PropTypes.func,
 };
 
 export default connect(appSelector)(App);

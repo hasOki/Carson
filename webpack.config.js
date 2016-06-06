@@ -1,10 +1,10 @@
 var path = require('path');
 var webpack = require('webpack');
+var CONFIG = require('./server/config');
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
-    'webpack-dev-server/client?http://localhost:1337',
     'webpack/hot/only-dev-server',
     'react-hot-loader/patch',
     './src/index',

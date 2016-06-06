@@ -8,20 +8,20 @@ const STYLES = {
   PRStatusTableContainer: {
     ...DEFAULT_FONT_FAMILY,
     padding: '30px',
-    width: '100%'
+    width: '100%',
   },
   title: {
     ...TYPE_BASE,
     ...HEADING_LARGE,
-    fontWeight: '700'
+    fontWeight: '700',
   },
   subtitle: {
-    color: COLOR_NEUTRAL[300]
+    color: COLOR_NEUTRAL[300],
   },
   tools: {
     width: '100%',
     textAlign: 'right',
-    padding: '20px'
+    padding: '20px',
   },
   table: {
     width: '100%',
@@ -31,32 +31,32 @@ const STYLES = {
       color: COLOR_NEUTRAL[200],
       padding: '20px',
       column: {
-        padding: '10px 20px'
-      }
+        padding: '10px 20px',
+      },
     },
     row: {
       column: {
-        padding: '10px 20px'
-      }
-    }
+        padding: '10px 20px',
+      },
+    },
   },
   serverInfo: {
     fontSize: '12px',
     padding: '20px 10px',
     color: COLOR_NEUTRAL[300],
-    lineHeight: '20px'
+    lineHeight: '20px',
   },
   loadingContainer: {
     width: '100%',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   loading: {
     borderRadius: '100px',
     margin: '30px auto',
     border: '1px solid #999',
     width: '200px',
-    height: '200px'
-  }
+    height: '200px',
+  },
 };
 
 export default class PRStatusTable extends AbstractComponent {
@@ -66,9 +66,7 @@ export default class PRStatusTable extends AbstractComponent {
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      this.props.checkStatus();
-    }, 2000);
+    this.props.checkStatus();
   }
 
   renderList(list) {
@@ -132,5 +130,5 @@ export default class PRStatusTable extends AbstractComponent {
 
 PRStatusTable.propTypes = {
   portList: PropTypes.array.isRequired,
-  checkStatus: PropTypes.func.isRequired
+  checkStatus: PropTypes.func.isRequired,
 };

@@ -1,12 +1,13 @@
 import { createSelector } from 'reselect';
 
 function portList(state) {
-  return state.portStatus;
+  return state.portsStatus;
 }
 
 export const currentPortList = createSelector(
   [portList],
-  (portStatus) => (portStatus.data.asMutable().sort((portA, portB) => {
-    return portA.port > portB.port;
-  }))
+  (portsStatus) => (
+    portsStatus.data.asMutable()
+      .sort((portA, portB) => (portA.port > portB.port))
+  )
 );

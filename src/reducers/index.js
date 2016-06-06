@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import navigation from './navigation';
-import portStatus from './portStatus';
+import portsStatus from './portsStatus';
 
 export default combineReducers({
   navigation,
-  portStatus
+  portsStatus,
 });

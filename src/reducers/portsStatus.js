@@ -1,9 +1,9 @@
 import immutable from 'seamless-immutable';
-import { RESET_PORT_STATUS, UPDATE_PORT_STATUS } from '../actions/portStatus';
+import { RESET_PORT_STATUS, UPDATE_PORTS_STATUS } from '../actions/portStatus';
 
 const initialstate = immutable({
   data: [],
-  loading: false
+  loading: false,
 });
 
 export default function portStatusReducer(state = initialstate, action) {
@@ -11,13 +11,14 @@ export default function portStatusReducer(state = initialstate, action) {
     case RESET_PORT_STATUS:
       return state.merge({
         data: [],
-        loading: true
+        loading: true,
       });
 
-    case UPDATE_PORT_STATUS:
-      console.log(state.data[0]);
+    case UPDATE_PORTS_STATUS:
+      console.log('ports data:', action.portsData);
       return state.merge({
-        data: state.data.concat(action.portData)
+        data: action.portsData,
+        loading: false,
       });
 
     default:
@@ -25,5 +26,5 @@ export default function portStatusReducer(state = initialstate, action) {
   }
 }
 
-export const portStatus = (state) => (state.portStatus);
+export const portsStatus = (state) => (state.portsStatus);
 
