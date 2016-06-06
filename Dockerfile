@@ -18,10 +18,11 @@ RUN cd /tmp && \
     npm install && \
     mkdir -p /data/www/carson && \
     cp -a /tmp/node_modules /data/www/carson/ && \
-    npm run build
+    cd /data/www/carson/
 
 COPY . /data/www/carson/
 WORKDIR /data/www/carson
+RUN npm run build
 
 ENTRYPOINT ["npm"]
 CMD ["start"]
