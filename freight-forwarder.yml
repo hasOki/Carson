@@ -35,4 +35,4 @@ environments:
         app:
           image: tune_development/ho_fn/hasoffers-carson-app:use01-staging-latest
           ports:
-            - "1337:4020"
+            - "4020:4020"

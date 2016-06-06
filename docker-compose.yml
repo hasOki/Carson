@@ -4,7 +4,7 @@ services:
   carson:
     build: ./
     ports:
-      - "1337:4020"
+      - "4020:4020"
     entrypoint: npm start
     environment:
       - "NODE_ENV=production"

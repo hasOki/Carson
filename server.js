@@ -6,10 +6,11 @@ const bodyParser = require('body-parser');
 const webpackConfig = require('./webpack.config.js');
 const portStatus = require('./server/portStatus');
 const containerRedirect = require('./server/containerRedirect');
+const CONFIG = require('./server/config');
 
 const DEVELOPMENT = !(process.env.NODE_ENV === 'production');
 const STAGE_SERVER_URL = 'http://h-p9hofn01-sta-1b.use01.ho.priv';
-const PORT = 1337;
+const PORT = CONFIG.CARSON_PORT;
 const IP = '0.0.0.0';
 
 const app = express();
