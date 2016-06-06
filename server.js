@@ -15,13 +15,14 @@ const IP = '0.0.0.0';
 
 const app = express();
 app.set('view engine', 'jade');
-app.use(express.static('server'));
+app.use('/js', express.static('dist/js'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // only use the webpack middleware during development mode
 if (DEVELOPMENT) {
+  console.log('RUNNING IN DEVELOPMENT MODE');
   const compiler = webpack(webpackConfig);
   app.use(webpackDevMiddleware(compiler, {
     historyApiFallback: true,
@@ -50,11 +51,12 @@ app.get('/prbuild/:id', (req, res) => {
 
 // everything else
 app.get('*', (req, res) => {
-  res.render('index', { pageTitle: 'Welcome to Carson, PR Deployment Dashboard' });
+  res.render('index', { pageTitle: 'Welcome to Carson' });
 });
 
 // start the server
 const appServer = app.listen(PORT, IP, (err) => {
   if (err) { console.error(err); }
+  console.log(`Running in ${process.env.NODE_ENV} mode`);
   console.info(`Carson 🎩  is running at http://${appServer.address().address}:${appServer.address().port}`);
 });

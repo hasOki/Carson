@@ -91,7 +91,9 @@ export default class PRStatusTable extends AbstractComponent {
     return (
       <div style={STYLES.PRStatusTableContainer}>
         <h1 style={STYLES.title}>Carson</h1>
-        <h3 style={STYLES.subtitle}>The CI-PR Dashboard. List, review and close your PR build with his help.</h3>
+        <h4 style={STYLES.subtitle}>The CI-PR Dashboard</h4>
+        <br /><br />
+        <p>Hi I am Carson, I can help you manage, show and delete your PR build in your staging server</p>
         <ul style={STYLES.tools}>
           <li><Button onClick={checkStatus}>Check Status</Button></li>
         </ul>

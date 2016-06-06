@@ -16,7 +16,9 @@ ADD package.json /tmp/package.json
 ADD .npmrc /tmp/.npmrc
 RUN cd /tmp && \
     npm install && \
-    mkdir -p /data/www/carson && cp -a /tmp/node_modules /data/www/carson/
+    mkdir -p /data/www/carson && \
+    cp -a /tmp/node_modules /data/www/carson/ && \
+    npm run build
 
 COPY . /data/www/carson/
 WORKDIR /data/www/carson

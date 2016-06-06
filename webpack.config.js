@@ -1,6 +1,5 @@
 var path = require('path');
 var webpack = require('webpack');
-var CONFIG = require('./server/config');
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
@@ -10,9 +9,9 @@ module.exports = {
     './src/index',
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'dist', 'js'),
     filename: 'scripts.js',
-    publicPath: '/',
+    publicPath: '/js/',
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
