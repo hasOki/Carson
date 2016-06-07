@@ -1,7 +1,6 @@
 export const CHECK_PORT_STATUS = 'CHECK_PORT_STATUS';
 export const RESET_PORT_STATUS = 'RESET_PORT_STATUS';
 export const UPDATE_PORTS_STATUS = 'UPDATE_PORTS_STATUS';
-export const DELETE_PR_BUILD = 'DELETE_PR_BUILD';
 
 export function updatePortsStatus(portsData) {
   return {
@@ -32,12 +31,5 @@ export function checkStatus() {
       console.log('PORTS', ports);
       dispatch(updatePortsStatus(ports));
     });
-  };
-}
-
-export function deletePRBuild(prID) {
-  return {
-    type: DELETE_PR_BUILD,
-    prID,
   };
 }

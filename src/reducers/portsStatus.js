@@ -27,4 +27,3 @@ export default function portStatusReducer(state = initialstate, action) {
 }
 
 export const portsStatus = (state) => (state.portsStatus);
-

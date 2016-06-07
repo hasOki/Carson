@@ -63,10 +63,16 @@ export default class PRStatusTable extends AbstractComponent {
   constructor(props) {
     super(props);
     this.renderList = this.renderList.bind(this);
+    this.handleDeleteButton = this.handleDeleteButton.bind(this);
   }
 
   componentDidMount() {
     this.props.checkStatus();
+  }
+
+  handleDeleteButton(prID) {
+    console.log('PR ID', prID);
+    // this.props.deleteByPRID(prID);
   }
 
   renderList(list) {
@@ -80,7 +86,11 @@ export default class PRStatusTable extends AbstractComponent {
           <a href={item.link} target="_blank">{item.link}</a>
         </td>
         <td style={STYLES.table.row.column}>{item.author}</td>
-        <td style={STYLES.table.row.column}><Button>Delete</Button></td>
+        <td style={STYLES.table.row.column}>
+        <Button onClick={() => { this.handleDeleteButton(item.id); }}>
+          Delete
+        </Button>
+        </td>
       </tr>
     ));
   }

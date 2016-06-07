@@ -3,7 +3,6 @@ const Q = require('q');
 const CONFIG = require('./config');
 
 const checkPort = (option) => {
-  console.log('Checking: ', option);
   const deferred = Q.defer();
   try {
     metadata(option, (err, data) => {
@@ -40,8 +39,4 @@ const checkPortList = (serverURL, portList) => (
 exports.checkStatus = (serverURL = CONFIG.DEFAULT_SERVER_URL) => {
   const ports = Array.from(new Array(CONFIG.PORT_LENGTH), (x, i) => CONFIG.PORT_START + i);
   return Q.allSettled(checkPortList(serverURL, ports));
-};
-
-exports.deletePRBuild = (prID) => {
-  console.log('Deleting PR Container : ', prID);
 };

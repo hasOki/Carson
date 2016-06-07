@@ -21,6 +21,7 @@
     "html-metadata": "^1.4.1",
     "immutable": "^3.8.1",
     "jade": "^1.11.0",
+    "jenkins-api": "^0.2.8",
     "json-loader": "^0.5.4",
     "lodash": "^4.13.1",
     "net": "^1.0.2",

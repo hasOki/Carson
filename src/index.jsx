@@ -1,3 +1,6 @@
+import 'styles/reset.css';
+import 'styles/app.css';
+
 import React from 'react';
 import { render } from 'react-dom';
 import { syncHistoryWithStore } from 'react-router-redux';
@@ -13,7 +16,7 @@ if (typeof window !== 'undefined') {
 const history = syncHistoryWithStore(
   browserHistory,
   store, {
-    selectLocationState: (appState) => appState.navigation
+    selectLocationState: (appState) => appState.navigation,
   }
 );
 

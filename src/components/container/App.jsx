@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { currentPortList } from 'selectors';
 import * as PortStatusActions from 'actions/portStatus';
+import * as DeleteContainerActions from 'actions/deleteContainer';
 import { Container } from 'components/container';
 import { PRStatusTable } from 'components/presentational';
 
@@ -24,6 +25,7 @@ class App extends Component {
       <Container>
         <PRStatusTable portList={portList}
           {...bindActionCreators(PortStatusActions, dispatch)}
+          {...bindActionCreators(DeleteContainerActions, dispatch)}
         />
       </Container>
     );

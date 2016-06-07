@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const webpackConfig = require('./webpack.config.js');
 const portStatus = require('./server/portStatus');
 const containerRedirect = require('./server/containerRedirect');
+const deleteContainer = require('./server/deleteContainer');
 const CONFIG = require('./server/config');
 
 const DEVELOPMENT = !(process.env.NODE_ENV === 'production');
@@ -47,6 +48,20 @@ app.get('/status', (req, res) => {
 // redirect to container port endpoint
 app.get('/prbuild/:id', (req, res) => {
   res.redirect(containerRedirect.redirect(STAGE_SERVER_URL, req.params.id));
+});
+
+// delete PR container endpoint
+app.get('/deleteContainer/:prid', (req, res) => {
+  console.log('Start Delete process for container:', req.params.prid);
+  deleteContainer
+    .deleteByPRID(req.params.prid)
+    .then((results) => {
+      // add delay for Jenkins to finish the delete job
+      setTimeout(() => {
+        console.log('Delete Completed');
+        res.json(results);
+      }, 2000);
+    });
 });
 
 // everything else
