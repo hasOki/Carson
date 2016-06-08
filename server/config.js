@@ -1,3 +1,4 @@
+exports.PROJECT_NAME = 'Jurassic Park :: Admin Interface V.2.0';
 exports.CARSON_PORT = 4020;
 exports.DEFAULT_SERVER_URL = 'http://h-p9hofn01-sta-1b.use01.ho.priv';
 exports.DEFAULT_JENKINS_SERVER_URL = 'sea3-jenkins-dev.sea3.office.priv';

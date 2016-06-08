@@ -1,3 +1,4 @@
+import CONFIG from '../../../server/config';
 import React, { PropTypes } from 'react';
 import { COLOR_NEUTRAL } from 'txl/styles/theme';
 import { DEFAULT_FONT_FAMILY, TYPE_BASE, HEADING_LARGE } from 'txl/styles/mixins/type';
@@ -136,9 +137,9 @@ export default class PRStatusTable extends AbstractComponent {
         <div style={STYLES.serverInfo}>
           <h2 sytle={STYLES.title}>Server Info:</h2>
           <p>
-            Project: Jurassic Park ( Admin Interface V.2 ) <br />
-            URL: http://h-p9hofn01-sta-1b.use01.ho.priv <br />
-            PORT: 4000 - 4019<br />
+            Project: {CONFIG.PROJECT_NAME} <br />
+            URL: {CONFIG.DEFAULT_SERVER_URL} <br />
+            PORT: {CONFIG.PORT_START} - {CONFIG.PORT_START + CONFIG.PORT_LENGTH - 1}<br />
           </p>
         </div>
       </div>
