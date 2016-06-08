@@ -45,6 +45,10 @@ const STYLES = {
         padding: '10px 20px',
       },
     },
+    noData: {
+      textAlign: 'center',
+      padding: '40px 80px',
+    },
   },
   serverInfo: {
     fontSize: '12px',
@@ -96,7 +100,7 @@ export default class PRStatusTable extends AbstractComponent {
   }
 
   render() {
-    const { portList, checkStatus } = this.props;
+    const { portList, checkStatus, isLoading } = this.props;
 
     return (
       <div style={STYLES.PRStatusTableContainer}>
@@ -126,9 +130,16 @@ export default class PRStatusTable extends AbstractComponent {
           </thead>
           <tbody>
             {portList && this.renderList(portList)}
+            {portList.length === 0 && !isLoading &&
+              <div style={STYLES.table.noData}>
+                Clearly we have nothing running on the server, my Lord <br />
+                <br />
+                -- Carson
+              </div>
+            }
           </tbody>
         </table>
-        {portList.length === 0 &&
+        {isLoading &&
           <div style={STYLES.loadingContainer}>
             <img style={STYLES.circleImage} src="./images/carson_reading.gif" />
           </div>
@@ -149,6 +160,7 @@ export default class PRStatusTable extends AbstractComponent {
 
 PRStatusTable.propTypes = {
   portList: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool,
   checkStatus: PropTypes.func.isRequired,
   deleteByPRID: PropTypes.func.isRequired,
 };

@@ -11,3 +11,8 @@ export const currentPortList = createSelector(
       .sort((portA, portB) => (portA.port > portB.port))
   )
 );
+
+export const portListLoadingStatus = createSelector(
+  [portList],
+  (portsStatus) => (portsStatus.isLoading)
+);

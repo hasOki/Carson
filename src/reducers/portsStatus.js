@@ -3,7 +3,7 @@ import { RESET_PORT_STATUS, UPDATE_PORTS_STATUS } from '../actions/portStatus';
 
 const initialstate = immutable({
   data: [],
-  loading: false,
+  isLoading: false,
 });
 
 export default function portStatusReducer(state = initialstate, action) {
@@ -11,14 +11,14 @@ export default function portStatusReducer(state = initialstate, action) {
     case RESET_PORT_STATUS:
       return state.merge({
         data: [],
-        loading: true,
+        isLoading: true,
       });
 
     case UPDATE_PORTS_STATUS:
       console.log('ports data:', action.portsData);
       return state.merge({
         data: action.portsData,
-        loading: false,
+        isLoading: false,
       });
 
     default:
