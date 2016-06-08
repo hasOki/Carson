@@ -1,0 +1,26 @@
+# Site navigation links
+
+- title: About Carson
+  url: /about/
+  excerpt: "The story behind Carson System, why we made it"
+  image: about_carson.jpg
+
+- title: The System
+  url: /system/
+  excerpt: "How we wire GitHub, Jenkins, Docker and Carson as a system"
+  image: the_system.jpg
+
+- title: The Dashboard
+  url: /dashboard/
+  excerpt: "Using Carson Dashboard to monitor and manage PR Build Container"
+  image: the_dashboard.jpg
+
+- title: The Workaround
+  url: /workaround/
+  excerpt: "Here is something that you can do to get around the failure"
+  image: the_workaround.jpg
+
+- title: GitHub
+  url: https://github.com/hasOki/Carson/
+  excerpt: "Checkout Carson Dashboard code in GitHub"
+  image: github.jpg
