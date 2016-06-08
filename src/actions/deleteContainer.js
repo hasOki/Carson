@@ -1,6 +1,7 @@
+import { checkStatus } from '../actions/portStatus';
 export const DELETE_PR_BUILD = 'DELETE_PR_BUILD';
 
-export function deletePRBuild(prID) {
+export function deleteByPRID(prID) {
   return (dispatch) => {
     // fetch port status list from API
     fetch(`/deleteContainer/${prID}`, { method: 'GET' })

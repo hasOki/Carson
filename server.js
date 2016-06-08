@@ -17,6 +17,7 @@ const IP = '0.0.0.0';
 const app = express();
 app.set('view engine', 'jade');
 app.use('/js', express.static('dist/js'));
+app.use('/images', express.static('images'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

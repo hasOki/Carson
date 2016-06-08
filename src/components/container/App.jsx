@@ -21,9 +21,13 @@ class App extends Component {
   render() {
     const { portList, dispatch } = this.props;
 
+    console.log('PortStatusActions', bindActionCreators(PortStatusActions, dispatch));
+    console.log('DeleteContainerActions', bindActionCreators(DeleteContainerActions, dispatch));
+
     return (
       <Container>
-        <PRStatusTable portList={portList}
+        <PRStatusTable
+          portList={portList}
           {...bindActionCreators(PortStatusActions, dispatch)}
           {...bindActionCreators(DeleteContainerActions, dispatch)}
         />

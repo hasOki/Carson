@@ -18,7 +18,11 @@ exports.deleteByPRID = (prID) => {
     if (err) {
       deferred.reject(err);
     }
-    deferred.resolve(data);
+
+    // Add time dealy to give buffer for Jenkins to finish his tasks
+    setTimeout(() => {
+      deferred.resolve(data);
+    }, 5000);
   });
 
   return deferred.promise;

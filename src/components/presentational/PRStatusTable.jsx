@@ -5,6 +5,11 @@ import Button from 'txl/buttons/Button';
 import AbstractComponent from 'AbstractComponent';
 
 const STYLES = {
+  column: {
+    display: 'inline',
+    float: 'left',
+    paddingRight: '40px',
+  },
   PRStatusTableContainer: {
     ...DEFAULT_FONT_FAMILY,
     padding: '30px',
@@ -50,7 +55,7 @@ const STYLES = {
     width: '100%',
     textAlign: 'center',
   },
-  loading: {
+  circleImage: {
     borderRadius: '100px',
     margin: '30px auto',
     border: '1px solid #999',
@@ -63,16 +68,10 @@ export default class PRStatusTable extends AbstractComponent {
   constructor(props) {
     super(props);
     this.renderList = this.renderList.bind(this);
-    this.handleDeleteButton = this.handleDeleteButton.bind(this);
   }
 
   componentDidMount() {
     this.props.checkStatus();
-  }
-
-  handleDeleteButton(prID) {
-    console.log('PR ID', prID);
-    // this.props.deleteByPRID(prID);
   }
 
   renderList(list) {
@@ -87,7 +86,7 @@ export default class PRStatusTable extends AbstractComponent {
         </td>
         <td style={STYLES.table.row.column}>{item.author}</td>
         <td style={STYLES.table.row.column}>
-        <Button onClick={() => { this.handleDeleteButton(item.id); }}>
+        <Button onClick={() => { this.props.deleteByPRID(item.id); }}>
           Delete
         </Button>
         </td>
@@ -100,10 +99,17 @@ export default class PRStatusTable extends AbstractComponent {
 
     return (
       <div style={STYLES.PRStatusTableContainer}>
-        <h1 style={STYLES.title}>Carson</h1>
-        <h4 style={STYLES.subtitle}>The CI-PR Dashboard</h4>
-        <br /><br />
-        <p>Hi I am Carson, I can help you manage, show and delete your PR build in your staging server</p>
+        <div>
+          <div style={STYLES.column}>
+            <img style={STYLES.circleImage} src="images/carson_header.jpg" />
+          </div>
+          <div style={STYLES.column}>
+            <h1 style={STYLES.title}>Carson</h1>
+            <h4 style={STYLES.subtitle}>The CI-PR Dashboard</h4>
+            <br /><br />
+            <p>Hi I am Carson, I can help you manage, show and delete your PR build in your staging server</p>
+          </div>
+        </div>
         <ul style={STYLES.tools}>
           <li><Button onClick={checkStatus}>Check Status</Button></li>
         </ul>
@@ -123,7 +129,7 @@ export default class PRStatusTable extends AbstractComponent {
         </table>
         {portList.length === 0 &&
           <div style={STYLES.loadingContainer}>
-            <img style={STYLES.loading} src="http://49.media.tumblr.com/tumblr_m9ngbt21WV1r9meixo1_400.gif" />
+            <img style={STYLES.circleImage} src="./images/carson_reading.gif" />
           </div>
         }
 
@@ -143,4 +149,5 @@ export default class PRStatusTable extends AbstractComponent {
 PRStatusTable.propTypes = {
   portList: PropTypes.array.isRequired,
   checkStatus: PropTypes.func.isRequired,
+  deleteByPRID: PropTypes.func.isRequired,
 };
