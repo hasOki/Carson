@@ -113,6 +113,7 @@ export default class PRStatusTable extends AbstractComponent {
             <h4 style={STYLES.subtitle}>The CI-PR Dashboard</h4>
             <br /><br />
             <p>Hi I am Carson, I can help you manage, show and delete your PR build in your staging server</p>
+            <p>If you want to learn more about me, check out my <a href="http://hasoki.github.io/Carson/">GitHub Pages</a>, and Yes, I <strong>DO</strong> have a GitHub pages, I am not an animals.</p>
           </div>
         </div>
         <ul style={STYLES.tools}>
