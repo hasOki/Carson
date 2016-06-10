@@ -42,6 +42,8 @@ npm run docker:run
 _We are using Docker-Compose to deploy Carson to your staging server._, after OPS install `docker-compose` to jenkins slave and our stage server.
 In the meantime we are using `freight-forwarder` to deploy to stage using [jenkins](https://sea3-jenkins-dev.sea3.office.priv/job/ho-fn-carson-export/).
 
+### GitHub Pages
+If you want to learn more about Carson, you can read it in his [github pages](http://hasoki.github.io/Carson/)
 
 TODO: 
 - [x] Update README.
@@ -52,4 +54,3 @@ TODO:
 - [x] Create redirect endpoint to forward user to the rigth Docker Container port.
 - [ ] Write blog about Carson
 - [ ] Add **Donut Chart** to show the stage ports PR capacity ( Using : 4/20 ports ).
-- [ ] 
