@@ -1,6 +1,12 @@
 ---
 layout: article
-title: "The System"
+title: "The Workaround"
+permalink: /workaround/
+share: false
+image: 
+  feature: 
 ---
 
-This is sample of the system content.
+### When all fails, RUN
+
+This is the list of workaround solution when all fails

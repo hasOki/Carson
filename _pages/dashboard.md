@@ -1,11 +1,11 @@
 ---
 layout: article
-title: "The System"
+title: "The Dashboard"
 permalink: /dashboard/
+share: false
+image: 
+  feature: 
 ---
 
-## CI Components
+### Carson Dashboard
 
-In Carson system, you use GitHub, Jenkins and Docker.
-
-[]

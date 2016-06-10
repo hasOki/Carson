@@ -2,8 +2,11 @@
 layout: article
 title: "About Carson"
 permalink: /about/
+share: false
+image: 
+  feature: 
 ---
 
-This is sample About Content.
+### The Story Behind Carson
 
 
